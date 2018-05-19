@@ -63,4 +63,13 @@
 <footer>
 	
 </footer>
+
+<?php 
+	function getURL($url){
+		$currentURL = "$_SERVER[REQUEST_URI]";
+		if($currentURL == $url){
+			return "active";
+		}
+	}
+?>
 </html>
