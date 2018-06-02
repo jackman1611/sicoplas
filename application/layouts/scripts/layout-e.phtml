@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Titulo del proyecto</title>
-
+	<title>
+		
+	</title>
 	<!-- Not modify -->
 	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">	
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
@@ -21,7 +20,6 @@
 	<script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
 	<!-- Not modify -->
 
-
 	<style type="text/css">
 	.title-nav{
 		font-family: 'Montserrat Alternates', sans-serif;
@@ -30,6 +28,7 @@
 	h1,h2,h3,h4,h5,h6{font-family: 'Montserrat Alternates', sans-serif;}
 	.links{font-family: 'Montserrat', sans-serif;}
 	</style>
+
 </head>
 <body background="/img/img_back/logback.jpg">
 	<div class="container">
@@ -41,15 +40,13 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav title-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="#">Registro de Servicio <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/index/contacto">Contacto</a>
-					</li>
+					
 				</ul>
 				<ul class="navbar-nav my-2 my-md-0 title-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="/index/login"><img src="/img/img_icos/log1.png" width="25" height="25"> Login</a>
+						<a class="nav-link" href="#">Cerrar Sesion</a>
 					</li>
 				</ul>
 			</div>
@@ -59,18 +56,5 @@
 	<div class="container"><br>
 		<?php echo $this->layout()->content; ?><br>
 	</div>
-	<!-- Contenido -->
 </body>
-<footer>
-	
-</footer>
-
-<?php 
-	function getURL($url){
-		$currentURL = "$_SERVER[REQUEST_URI]";
-		if($currentURL == $url){
-			return "active";
-		}
-	}
-?>
 </html>
