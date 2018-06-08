@@ -3,10 +3,12 @@
 class IndexController extends Zend_Controller_Action{
 
 	private $_usur;
+    private $_session;
 
     public function init(){
         
         $this->_usur = new Application_Model_SicoplasIndexModel;
+        $this->_session = new Zend_Session_Namespace("current_session");
     }
 
     public function indexAction(){
@@ -31,7 +33,21 @@ class IndexController extends Zend_Controller_Action{
 
             $result = $this->_usur->Validar($post);
             if ($result) {
-                echo "USARIO ENCONTRADO";
+                foreach ($result as $res) {
+                     if ($res['rol']==1) {
+                        $this->_session->id = $res["id"];
+                        $this->_session->nombre = $res["nombre"];
+                        $this->redirect("/panela/index");
+                        
+                } else {
+                        $this->_session->id = $res["id"];
+                        $this->_session->nombre = $res["nombre"];
+                        $this->redirect("/panele/index"); 
+                }
+                    # code...
+                }
+               
+                
             } else {
                 echo "USARIO NO ENCONTRADO";
                 print "<br><a href\"/index/login\">Regresar</a>";
