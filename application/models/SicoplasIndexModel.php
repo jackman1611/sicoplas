@@ -2,10 +2,10 @@
 
 class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
 	
-	public function GetAll(){
+	public function GetAll($table){
 		 try {
             $db = Zend_Db_Table::getDefaultAdapter();
-            $qry = $db->query("SELECT * FROM usuarios");
+            $qry = $db->query("SELECT * FROM $table");
             $row = $qry->fetchAll();
             $db->closeConnection();
             return $row;
@@ -32,7 +32,7 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
             //var_dump($post);exit;
             $db = Zend_Db_Table::getDefaultAdapter();
             $p = openssl_digest($post["passw"],"sha512");
-            // var_dump($p);exit
+            // var_dump($p);exit;
             $valiu = $db->query("SELECT * FROM usuarios WHERE correo = ? and password = ?",
         array(
             $post["mail"],

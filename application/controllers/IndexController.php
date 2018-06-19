@@ -59,5 +59,19 @@ class IndexController extends Zend_Controller_Action{
         }
         
     }
+
+    public function logoutAction(){
+
+        $session= new Zend_Session_Namespace('current_session');
+        $session->unsetAll();
+
+        Zend_Session::namespaceUnset('current_session');
+
+        Zend_Session::destroy();
+        
+        $url = "/";
+        $this->redirect($url);
+        //$this->_redirect('/');
+    }//logout
 }
 

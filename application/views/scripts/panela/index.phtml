@@ -1,0 +1,14 @@
+<div class="row">
+	<table class="table text-left table-hover"> 
+		<thead>
+			<th>Descripcion</th>
+			<th>Comentarios</th>
+		</thead>
+		<?php foreach ($this->servicios as $serv): ?>
+			<tbody>
+				<td><?php echo $serv['descripcion']; ?></td>
+				<td><?php echo $serv['comentario']; ?></td>
+			</tbody>
+		<?php endforeach ?>
+	</table>
+</div>

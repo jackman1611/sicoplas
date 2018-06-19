@@ -1,3 +1,4 @@
+<?php $session = new Zend_Session_Namespace("current_session"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 	<style type="text/css">
 	.title-nav{
 		font-family: 'Montserrat Alternates', sans-serif;
-		font-size: 20px;		
+		font-size: 18px;		
 		}
 	h1,h2,h3,h4,h5,h6{font-family: 'Montserrat Alternates', sans-serif;}
 	.links{font-family: 'Montserrat', sans-serif;}
@@ -38,19 +39,22 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav title-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="#">Registro de Servicio <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="/panela/">Nuevo servicio</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Gestion de Uuarios <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="/panela/servicios">Gestion de Servicios</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Gestion de Empresas <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="/panela/usuarios">Gestion de Uuarios</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/panela/empresas">Gestion de Empresas</a>
 					</li>
 					
 				</ul>
 				<ul class="navbar-nav my-2 my-md-0 title-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="#">Cerrar Sesion</a>
+						<a class="nav-link" href="/index/logout">Cerrar Sesion</a>
 					</li>
 				</ul>
 			</div>
