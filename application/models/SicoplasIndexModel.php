@@ -14,6 +14,28 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
         }
 	}
 
+public function insertUsario($post,$table)
+{
+    try {
+            $db = Zend_Db_Table::getDefaultAdapter();
+            $encri = openssl_digest($post["pword"],"sha512");
+            $datasave = array(
+                'rol'=>$post['rol'],
+                'nombre'=>$post['name'],
+                'apellidop'=>$post['apa'],
+                'apellidom'=>$post['ama'],
+                'direccion'=>$post['dir'],
+                'telefono'=>$post['phone'],
+                'correo'=>$post['mail'],
+                'password'=>$encri); 
+            $res = $db->insert($table, $datasave);
+            $db->closeConnection();               
+            return $res;
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }//Insert
+
     public function GetSpecific($id){
          try {
             $db = Zend_Db_Table::getDefaultAdapter();

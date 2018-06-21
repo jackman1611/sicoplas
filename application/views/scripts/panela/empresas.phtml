@@ -1,0 +1,29 @@
+<div class="row">
+	<table class="table text-left table-hover"> 
+		<thead>
+			<th>NOMBRE</th>
+			<th>DIRECCION</th>
+			<th>CORREO</th>
+			<th>TELEFONO</th>
+			<th>NOMBRE GERENTE</th>
+			<th>CREADO</th>
+			<th>ESTADO</th>
+			
+			<th>EDITARL</th>
+			<th>ELIMINAR</th>
+		</thead>
+		<?php foreach ($this->empresas as $emp): ?>
+			<tbody>
+				<td><?php echo $emp['nombree']; ?></td>
+				<td><?php echo $emp['direccion']; ?></td>
+				<td><?php echo $emp['correo']; ?></td>
+				<td><?php echo $emp['telefono']; ?></td>
+				<td><?php echo $emp['nombreg']; ?></td>
+				<td><?php echo $emp['creado']; ?></td>
+				<td><?php echo $emp['estado']; ?></td>
+				<td></td>
+				<td></td>
+			</tbody>
+		<?php endforeach ?>
+	</table>
+</div>

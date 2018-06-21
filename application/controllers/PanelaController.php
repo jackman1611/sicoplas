@@ -24,11 +24,39 @@ class PanelaController extends Zend_Controller_Action{
 
     public function usuariosAction()
     {
-    	
+     $table="usuarios";
+        $this->view->usuarios = $this->_resultados->GetAll($table);	
     }
 
     public function empresasAction()
     {
+       $table="empresas";
+        $this->view->empresas = $this->_resultados->GetAll($table);  
+    }
+    public function formulariousuarioAction()
+    {
+     
+
+    }
+
+    public function requestadduserAction()
+    {
+       $this->_helper->layout()->disableLayout();
+       $this->_helper->viewRenderer->setNoRender(true);
+       $post = $this->getRequest()->getPost();
+       if($this->getRequest()->getPost()){
+        $table="usuarios";
+        $result=$this->_resultados->insertUsario($post,$table);
+        // var_dump($result); exit;
+        if($result){
+            return $this->_redirect('/panela/usuarios');
+        }else{
+            print '<script language="javaScript">';
+            print 'alert(NO SE PUEDE INSERTAR DATOS");';
+            print '</script>';
+
+        }
         
+       }
     }
 }

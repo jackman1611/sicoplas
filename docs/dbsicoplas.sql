@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2018 at 11:10 PM
+-- Generation Time: Jun 22, 2018 at 12:20 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -30,13 +30,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `empresas` (
   `id` int(11) NOT NULL,
-  `nombre_e` varchar(45) NOT NULL,
+  `nombree` varchar(45) NOT NULL,
   `direccion` varchar(45) NOT NULL,
-  `mail` varchar(100) NOT NULL,
+  `correo` varchar(100) NOT NULL,
   `telefono` varchar(100) NOT NULL,
-  `nombre_gerente` varchar(45) NOT NULL,
-  `creado` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `nombreg` varchar(45) NOT NULL,
+  `creado` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `estado` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `empresas`
+--
+
+INSERT INTO `empresas` (`id`, `nombree`, `direccion`, `correo`, `telefono`, `nombreg`, `creado`, `estado`) VALUES
+(1, 'LOGIS Express', '', 'logis@hotmail.com', '55 123456', 'fulano', '2018-06-21 20:49:36.437983', 'Aguascalientes');
 
 -- --------------------------------------------------------
 
@@ -97,8 +105,8 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(45) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `apellido paterno` varchar(45) NOT NULL,
-  `apellido materno` varchar(45) NOT NULL,
+  `apellidop` varchar(45) NOT NULL,
+  `apellidom` varchar(45) NOT NULL,
   `direccion` varchar(200) NOT NULL,
   `telefono` varchar(45) NOT NULL,
   `rol` int(11) NOT NULL,
@@ -109,9 +117,9 @@ CREATE TABLE `usuarios` (
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `password`, `apellido paterno`, `apellido materno`, `direccion`, `telefono`, `rol`, `creado`) VALUES
+INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `password`, `apellidop`, `apellidom`, `direccion`, `telefono`, `rol`, `creado`) VALUES
 (2, 'Alfonso', 'alfonsov1709@gmail.com', '698ec06124cfa838bb96e6ebd095941deb314e63345c89a1b1d5f107ff6e86211b8dce17755f6e8e5edee8c7deb452617fea447c711d3e8f778d0aa1b7b01749', 'Vargas', 'Alquicira', 'Richard o Robin No. 35', '5545860466', 2, '2018-06-02 21:09:08.512856'),
-(3, 'Adminstrador', 'admin164@gmail.com', '698ec06124cfa838bb96e6ebd095941deb314e63345c89a1b1d5f107ff6e86211b8dce17755f6e8e5edee8c7deb452617fea447c711d3e8f778d0aa1b7b01749', '', '', '', '', 1, '2018-06-02 21:10:03.377598');
+(3, 'Adminstrador', 'admin164@gmail.com', '698ec06124cfa838bb96e6ebd095941deb314e63345c89a1b1d5f107ff6e86211b8dce17755f6e8e5edee8c7deb452617fea447c711d3e8f778d0aa1b7b01749', 'Delgado', 'Rosas', 'Rio Moctezuma No.5', '5534804751 ', 1, '2018-06-21 20:43:31.447208');
 
 -- --------------------------------------------------------
 
@@ -197,7 +205,7 @@ ALTER TABLE `vector_form`
 -- AUTO_INCREMENT for table `empresas`
 --
 ALTER TABLE `empresas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `form_servicio`
