@@ -1,17 +1,3 @@
-<div class="row">
-	<table class="table text-left table-hover"> 
-		<thead>
-			<th>Nombre</th>
-			<th>Correo</th>
-		</thead>
-		<?php foreach ($this->servicios as $serv): ?>
-			<tbody>
-				<td><?php echo $var ?></td>
-				<td><?php echo $var ?></td>
-			</tbody>
-		<?php endforeach ?>
-	</table>
-</div>
 <div>
 <br><a data-toggle="modal" data-target="#myModal" class="btn btn-info" href="#">AGREGAR NUEVO</a>
 </div>
@@ -21,7 +7,7 @@
 	<div class="modal-dialog" style="background-color: white;">
 		<div clas="modal-content">
 
-			<form method="POST" action="/panele/index" enctype="multipart/form-data">
+			<form method="POST" action="/panele/requestadduser" enctype="multipart/form-data">
 				<div class="modal-header">
 					<h4 class="model-title" id="myModalLabel">NUEVO USUARIO:</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -56,11 +42,11 @@
 						</div>
 						<div class="col-lg-12 text-left">
 							<label for="text"><h4>DIRECCION: </h4></label>
-							<p><input type="text" name="dir" class="form-control" required></p>
+							<p><input type="password" name="dir" class="form-control" required></p>
 						</div>
 						<div class="col-lg-12 text-left">
 							<label for="text"><h4>DESCRIPCION: </h4></label>
-							<p><input type="text" name="desc" class="form-control" required></p>
+							<p><input type="password" name="desc" class="form-control" required></p>
 						</div>
 					</div>
 					<!-- Boton -->
