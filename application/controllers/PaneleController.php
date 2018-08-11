@@ -16,4 +16,23 @@ class PaneleController extends Zend_Controller_Action{
     	$table="servicios";
         $this->view->servicios = $this->_resultados->GetAll($table);
     }//init
+
+    public function requestadduserAction()
+    {
+       $this->_helper->layout()->disableLayout();
+       $this->_helper->viewRenderer->setNoRender(true);
+       $post = $this->getRequest()->getPost();
+       if($this->getRequest()->getPost()){
+        $table="servicios";
+        $result=$this->_resultados->insertUsario($post,$table);
+        // var_dump($result); exit;
+        if($result){
+            return $this->_redirect('/panele/index');
+        }else{
+            print '<script language="javaScript">';
+            print 'alert(NO SE PUEDE INSERTAR DATOS");';
+            print '</script>';
 }
+  }
+    }
+      }
