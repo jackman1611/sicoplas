@@ -17,7 +17,7 @@ class PaneleController extends Zend_Controller_Action{
         $this->view->servicios = $this->_resultados->GetAll($table);
     }//init
 
-    public function requestadduserAction()
+    public function requestaddreportAction()
     {
        $this->_helper->layout()->disableLayout();
        $this->_helper->viewRenderer->setNoRender(true);
@@ -30,7 +30,7 @@ class PaneleController extends Zend_Controller_Action{
             return $this->_redirect('/panele/index');
         }else{
             print '<script language="javaScript">';
-            print 'alert(NO SE PUEDE INSERTAR DATOS");';
+            print 'alert("NO SE PUEDE INSERTAR DATOS");';
             print '</script>';
 }
   }

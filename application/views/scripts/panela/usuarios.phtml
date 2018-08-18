@@ -1,14 +1,16 @@
 <div class="row">
 	<table class="table text-left table-hover"> 
 		<thead>
-			<th>NOMBRE</th>
-			<th>CORREO</th>
-			<th>APELLIDO P</th>
-			<th>APELLIDO M</th>
-			<th>DIRECCION</th>
-			<th>TELEFONO</th>
-			<th>ROL</th>
-			<th>CREADO</th>
+			<th>Nombre</th>
+			<th>Correo</th>
+			<th>Apellido Paterno</th>
+			<th>Apellido Materno</th>
+			<th>Direccion</th>
+			<th>Telefono</th>
+			<th>Cargo</th>
+			<th>Creado</th>
+			<th>Editar</th>
+			<TH>Eliminar</TH>
 		</thead>
 		<?php foreach ($this->usuarios as $usr): ?>
 			<tbody>
@@ -18,8 +20,14 @@
 				<td><?php echo $usr['apellidom']; ?></td>
 				<td><?php echo $usr['direccion']; ?></td>
 				<td><?php echo $usr['telefono']; ?></td>
-				<td><?php echo $usr['rol']; ?></td>
+				<?php if ($usr['rol']==1): ?>
+					<td><?php echo "Administrador"; ?></td>
+				<?php else: ?>
+					<td><?php echo "Empleado"; ?></td>
+				<?php endif ?>
 				<td><?php echo $usr['creado']; ?></td>
+				<td><a href="/panela/usuariosedit/id/<?php echo $usr['id']; ?>"><i class="fas fa-2x fa-edit"></i></a></td>
+				<td><a href=""><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
 			</tbody>
 		<?php endforeach ?>
 	</table>
@@ -73,11 +81,8 @@
 							<p><input type="password" name="pwordc" class="form-control" required></p>
 						</div>
 					</div>
-					<!-- Boton -->
-					<!-- Boton -->
 				</div>
 				<div class ="modal-footer">
-					<button type="button" class="btn btn-default" data-dismmiss="modal">CERRAR</button>
 					<button type="submit" class="btn btn-primary">GUARDAR </button>
 					
 				</div>
@@ -105,5 +110,4 @@
 		if(letras.indexOF(tecla)== i && !tecla_especial)
 			return false;
 	}
-
 </script>

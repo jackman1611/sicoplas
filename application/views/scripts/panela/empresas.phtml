@@ -8,8 +8,7 @@
 			<th>NOMBRE GERENTE</th>
 			<th>CREADO</th>
 			<th>ESTADO</th>
-			
-			<th>EDITARL</th>
+			<th>EDITAR</th>
 			<th>ELIMINAR</th>
 		</thead>
 		<?php foreach ($this->empresas as $emp): ?>
@@ -21,8 +20,8 @@
 				<td><?php echo $emp['nombreg']; ?></td>
 				<td><?php echo $emp['creado']; ?></td>
 				<td><?php echo $emp['estado']; ?></td>
-				<td></td>
-				<td></td>
+				<td><a href="/panela/empresasedit/id/<?php echo $emp['id']; ?>"><i class="fas fa-2x fa-edit"></i></a></td>
+				<td><a href=""><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
 			</tbody>
 		<?php endforeach ?>
 	</table>

@@ -1,0 +1,47 @@
+<form method="POST" action="/panela/requestadduser" enctype="multipart/form-data">
+	<div class="modal-header">
+		<h4 class="model-title" id="myModalLabel">NUEVO USUARIO:</h4>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	</div>
+	<div class="modal-body">
+		<div>
+			<input type="hidden" name="rol" value="2">
+			<div class=""></div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Nombre(s): </h4></label>
+				<p><input type="text" name="name" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Apellido paterno: </h4></label>
+				<p><input type="text" name="apa" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Apellido materno: </h4></label>
+				<p><input type="text" name="ama" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Dirección: </h4></label>
+				<p><input type="text" name="dir" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Telefono: </h4></label>
+				<p><input type="text" name="phone" class="form-control" onkeypress="return numeros(event)" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Correo electronico: </h4></label>
+				<p><input type="text" name="mail" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Contraseña: </h4></label>
+				<p><input type="password" name="pword" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Confirme contraseña: </h4></label>
+				<p><input type="password" name="pwordc" class="form-control" required></p>
+			</div>
+		</div>
+	</div>
+	<div class ="modal-footer">
+		<button type="submit" class="btn btn-primary">GUARDAR </button>
+	</div>
+</form>

@@ -50,8 +50,8 @@ class IndexController extends Zend_Controller_Action{
                
                 
             } else {
-                echo "USARIO NO ENCONTRADO";
-                print "<br><a href\"/index/login\">Regresar</a>";
+                echo "Compruebe los datos";
+                print "<br><a href=\"/index/login\">Regresar</a>";
             }
             
         } else {

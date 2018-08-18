@@ -24,8 +24,18 @@ class PanelaController extends Zend_Controller_Action{
 
     public function usuariosAction()
     {
-     $table="usuarios";
-        $this->view->usuarios = $this->_resultados->GetAll($table);	
+    $table="usuarios";
+    $this->view->usuarios = $this->_resultados->GetAll($table);	
+    }
+
+    public function usuarioseditAction()
+    {
+        $table="usuarios";
+        if($this->_hasParam('id')){
+            $id = $this->_getParam('id');
+            $wh="id";
+            $this->view->usuario = $this->_pro->GetSpecific($table,$wh,$id);
+        }
     }
 
     public function empresasAction()
@@ -33,6 +43,17 @@ class PanelaController extends Zend_Controller_Action{
        $table="empresas";
         $this->view->empresas = $this->_resultados->GetAll($table);  
     }
+
+    public function empresaseditAction()
+    {
+        $table="usuarios";
+        if($this->_hasParam('id')){
+            $id = $this->_getParam('id');
+            $wh="id";
+            $this->view->usuario = $this->_pro->GetSpecific($table,$wh,$id);
+        }
+    }
+
     public function formulariousuarioAction()
     {
      
@@ -43,7 +64,9 @@ class PanelaController extends Zend_Controller_Action{
     {
        $this->_helper->layout()->disableLayout();
        $this->_helper->viewRenderer->setNoRender(true);
+
        $post = $this->getRequest()->getPost();
+
        if($this->getRequest()->getPost()){
         $table="usuarios";
         $result=$this->_resultados->insertUsario($post,$table);
