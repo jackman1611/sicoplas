@@ -1,0 +1,39 @@
+<form method="POST" action="/panela/requestaddemp"enctype="multipart/form-data">
+	<div class="modal-header">
+		<h4 class="model-title" id="myModalLabel">NUEVA EMPRESA:</h4>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	</div>
+	<div class="modal-body">
+		<div>
+			<input type="hidden" name="rol" value="2">
+			<div class=""></div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Nombre: </h4></label>
+				<p><input type="text" name="name" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Direccion: </h4></label>
+				<p><input type="text" name="dir" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Correo: </h4></label>
+				<p><input type="text" name="mail" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Telefono: </h4></label>
+				<p><input type="text" name="telf" class="form-control" onkeypress="return numeros(event)" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Nombre Gerente: </h4></label>
+				<p><input type="text" name="gere" class="form-control" required></p>
+			</div>
+			<div class="col-lg-12 text-left">
+				<label for="text"><h4>Estado: </h4></label>
+				<p><input type="text" name="estado" class="form-control" required></p>
+			</div>
+		</div>
+	</div>
+	<div class ="modal-footer">
+		<button type="submit" class="btn btn-primary">GUARDAR </button>
+	</div>
+</form>
