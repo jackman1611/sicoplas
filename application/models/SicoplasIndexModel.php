@@ -36,6 +36,25 @@ public function insertUsario($post,$table)
         }
     }//Insert
 
+public function insertEmpresa($post,$table)
+{
+    try {
+            $db = Zend_Db_Table::getDefaultAdapter();
+            $datasave = array(
+                'nombre'=>$post['name'],
+                'direccion'=>$post['dir'],
+                'correo'=>$post['mail'],
+                'telefono'=>$post['phone'],
+                'nombreg'=>$post['gere'];
+                'estado'=>$post['estado'],
+            $res = $db->insert($table, $datasave);
+            $db->closeConnection();               
+            return $res;
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }
+
     public function GetSpecific($id){
          try {
             $db = Zend_Db_Table::getDefaultAdapter();
