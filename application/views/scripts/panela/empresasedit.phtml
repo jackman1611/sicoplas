@@ -1,36 +1,37 @@
 <form method="POST" action="/panela/requesteditemp"enctype="multipart/form-data">
 	<div class="modal-header">
-		<h4 class="model-title" id="myModalLabel">NUEVA EMPRESA:</h4>
+		<h4 class="model-title" id="myModalLabel">EDITAR EMPRESA:</h4>
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	</div>
 	<div class="modal-body">
 		<div>
-			<input type="hidden" name="rol" value="2">
-			<div class=""></div>
-			<div class="col-lg-12 text-left">
+		    <?php foreach ($this->empresas as $emp): ?>
+		    <div class="col-lg-12 text-left">
 				<label for="text"><h4>Nombre: </h4></label>
-				<p><input type="text" name="name" class="form-control" required></p>
+				<p><input type="text" name="name" class="form-control" value="<?php echo $emp['nombree'] ?>"></p>
 			</div>
 			<div class="col-lg-12 text-left">
 				<label for="text"><h4>Direccion: </h4></label>
-				<p><input type="text" name="dir" class="form-control" required></p>
+				<p><input type="text" name="dir" class="form-control" value="<?php echo $emp['direccion'] ?>"></p>
 			</div>
 			<div class="col-lg-12 text-left">
 				<label for="text"><h4>Correo: </h4></label>
-				<p><input type="text" name="mail" class="form-control" required></p>
+				<p><input type="text" name="mail" class="form-control" value="<?php echo $emp['correo'] ?>"></p>
 			</div>
 			<div class="col-lg-12 text-left">
 				<label for="text"><h4>Telefono: </h4></label>
-				<p><input type="text" name="telf" class="form-control" onkeypress="return numeros(event)" required></p>
+				<p><input type="text" name="telf" class="form-control" onkeypress="return numeros(event)" value="<?php echo $emp['telefono'] ?>"></p>
 			</div>
 			<div class="col-lg-12 text-left">
 				<label for="text"><h4>Nombre Gerente: </h4></label>
-				<p><input type="text" name="gere" class="form-control" required></p>
+				<p><input type="text" name="gere" class="form-control" value="<?php echo $emp['nombreg'] ?>"></p>
 			</div>
 			<div class="col-lg-12 text-left">
 				<label for="text"><h4>Estado: </h4></label>
-				<p><input type="text" name="estado" class="form-control" required></p>
-			</div>
+				<p><input type="text" name="estado" class="form-control" value="<?php echo $emp['estado'] ?>"></p>
+			</div>	
+		    <?php endforeach ?>
+			
 		</div>
 	</div>
 	<div class ="modal-footer">
