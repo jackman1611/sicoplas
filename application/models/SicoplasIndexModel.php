@@ -14,9 +14,8 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
         }
 	}
 
-public function insertUsario($post,$table)
-{
-    try {
+    public function insertUsario($post,$table){
+        try {
             $db = Zend_Db_Table::getDefaultAdapter();
             $encri = openssl_digest($post["pword"],"sha512");
             $datasave = array(
@@ -36,24 +35,23 @@ public function insertUsario($post,$table)
         }
     }//Insert
 
-public function insertEmpresa($post,$table)
-{
-    try {
+    public function insertEmpresa($post,$table){
+        try {
             $db = Zend_Db_Table::getDefaultAdapter();
             $datasave = array(
                 'nombre'=>$post['name'],
                 'direccion'=>$post['dir'],
                 'correo'=>$post['mail'],
                 'telefono'=>$post['phone'],
-                'nombreg'=>$post['gere'];
-                'estado'=>$post['estado'],
-            $res = $db->insert($table, $datasave);
-            $db->closeConnection();               
-            return $res;
-        } catch (Exception $e) {
-            echo $e;
+                'nombreg'=>$post['gere'],
+                'estado'=>$post['estado']);
+                $res = $db->insert($table, $datasave);
+                $db->closeConnection();               
+                return $res;
+            } catch (Exception $e) {
+                echo $e;
+            }
         }
-    }
 
     public function GetSpecific($id){
          try {
@@ -65,7 +63,7 @@ public function insertEmpresa($post,$table)
         } catch (Exception $e) {
             echo $e;
         }
-    }
+    }//getespecific
 
     Public function Validar($post){
 
@@ -75,19 +73,16 @@ public function insertEmpresa($post,$table)
             $p = openssl_digest($post["passw"],"sha512");
             // var_dump($p);exit;
             $valiu = $db->query("SELECT * FROM usuarios WHERE correo = ? and password = ?",
-        array(
-            $post["mail"],
-            $p));       
-        $row = $valiu->fetchAll();             
-                    $db->closeConnection();               
-                    return $row;
+                array(
+                    $post["mail"],
+                    $p));       
+            $row = $valiu->fetchAll();             
+            $db->closeConnection();               
+            return $row;
                     //var_dump($valiu);exit;
         } catch (Exception $e) {
             echo $e;
-        }//end try and catch
-        
-        
-
+        }//catch
     }//end validar
 	
 }
