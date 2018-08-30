@@ -46,11 +46,15 @@ class PanelaController extends Zend_Controller_Action{
 
     public function empresaseditAction()
     {
-        $table="usuarios";
+        $table="empresas";
         if($this->_hasParam('id')){
             $id = $this->_getParam('id');
             $wh="id";
+<<<<<<< HEAD
             $this->view->usuario = $this->_resultados->GetSpecific($table,$wh,$id);
+=======
+            $this->view->empresas = $this->_resultados->GetSpecific($table,$wh,$id);
+>>>>>>> 5da9a0e50f6779d33db56331d4fb8dd8d4e78c8f
         }
     }
 

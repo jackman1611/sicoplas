@@ -39,10 +39,10 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
         try {
             $db = Zend_Db_Table::getDefaultAdapter();
             $datasave = array(
-                'nombre'=>$post['name'],
+                'nombree'=>$post['name'],
                 'direccion'=>$post['dir'],
                 'correo'=>$post['mail'],
-                'telefono'=>$post['phone'],
+                'telefono'=>$post['telf'],
                 'nombreg'=>$post['gere'],
                 'estado'=>$post['estado']);
                 $res = $db->insert($table, $datasave);
@@ -53,10 +53,10 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
             }
         }
 
-    public function GetSpecific($id){
+    public function GetSpecific($table,$wh,$id){
          try {
             $db = Zend_Db_Table::getDefaultAdapter();
-            $qry = $db->query("SELECT * FROM usuarios WHERE id = ?",array($id));
+            $qry = $db->query("SELECT * FROM $table WHERE wh = ?",array($id));
             $row = $qry->fetchAll();
             $db->closeConnection();
             return $row;
