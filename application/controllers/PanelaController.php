@@ -50,7 +50,7 @@ class PanelaController extends Zend_Controller_Action{
         if($this->_hasParam('id')){
             $id = $this->_getParam('id');
             $wh="id";
-            $this->view->usuario = $this->_pro->GetSpecific($table,$wh,$id);
+            $this->view->usuario = $this->_resultados->GetSpecific($table,$wh,$id);
         }
     }
 
