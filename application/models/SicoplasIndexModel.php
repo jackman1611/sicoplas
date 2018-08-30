@@ -56,7 +56,7 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
     public function GetSpecific($table,$wh,$id){
          try {
             $db = Zend_Db_Table::getDefaultAdapter();
-            $qry = $db->query("SELECT * FROM $table WHERE wh = ?",array($id));
+            $qry = $db->query("SELECT * FROM $table WHERE $wh = ?",array($id));
             $row = $qry->fetchAll();
             $db->closeConnection();
             return $row;
