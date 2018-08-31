@@ -51,7 +51,6 @@ class PanelaController extends Zend_Controller_Action{
             $id = $this->_getParam('id');
             $wh="id";
             $this->view->empresas = $this->_resultados->GetSpecific($table,$wh,$id);
-
         }
     }
 
@@ -105,4 +104,26 @@ class PanelaController extends Zend_Controller_Action{
         }
     }
        }
+
+    public function requesteditusrAction(){
+        $this->_helper->layout()->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+
+        $post = $this->getRequest()->getPost();
+
+        if($this->getRequest()->getPost()){
+            $table="empresas";
+            $wh="id";
+            $result=$this->_resultados->UpdateUsrSicoplas($post,$table,$wh,$id);
+            // var_dump($result); exit;
+            if($result){
+                return $this->_redirect('/panela/usuarios');
+            }else{
+                print '<script language="javaScript">';
+                print 'alert(NO SE PUEDE INSERTAR DATOS");';
+                print '</script>';
+
+            }
+        }
+    }
 }

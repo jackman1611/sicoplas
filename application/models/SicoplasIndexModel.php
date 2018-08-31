@@ -85,4 +85,25 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
         }//catch
     }//end validar
 	
+
+    public function UpdateUsrSicoplas($post,$table,$wh,$id){
+        try {
+            $db = Zend_Db_Table::getDefaultAdapter();
+            $qry = $db->query("UPDATE $table SET nombre = ? , apellidop = ? , apellidom = ? , direccion = ? , telefono = ? , correo = ? WHERE $wh = ?",array(
+                $post['name'],
+                $post['apa'],
+                $post['ama'],
+                $post['dir'],
+                $post['phone'],
+                $post['mail'],
+                $id));
+            $db->closeConnection();               
+            return $qry;
+        } 
+        catch (Exception $e) {
+            echo $e;
+        }
+    }
+
+    
 }
