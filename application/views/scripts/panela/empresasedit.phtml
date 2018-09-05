@@ -6,6 +6,7 @@
 	<div class="modal-body">
 		<div>
 		    <?php foreach ($this->empresas as $emp): ?>
+		    	<input type="hidden" name="id" value="<?php echo $usr['id']; ?>">
 		    <div class="col-lg-12 text-left">
 				<label for="text"><h4>Nombre: </h4></label>
 				<p><input type="text" name="name" class="form-control" value="<?php echo $emp['nombree'] ?>"></p>
