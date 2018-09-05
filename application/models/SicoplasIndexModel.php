@@ -86,7 +86,7 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
     }//end validar
 	
 
-    public function UpdateUsrSicoplas($post,$table,$wh,$id){
+    public function UpdateUsrSicoplas($post,$table,$wh){
         try {
             $db = Zend_Db_Table::getDefaultAdapter();
             $qry = $db->query("UPDATE $table SET nombre = ? , apellidop = ? , apellidom = ? , direccion = ? , telefono = ? , correo = ? WHERE $wh = ?",array(
@@ -96,7 +96,7 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
                 $post['dir'],
                 $post['phone'],
                 $post['mail'],
-                $id));
+                $post['id']));
             $db->closeConnection();               
             return $qry;
         } 

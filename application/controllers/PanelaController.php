@@ -114,7 +114,8 @@ class PanelaController extends Zend_Controller_Action{
         if($this->getRequest()->getPost()){
             $table="empresas";
             $wh="id";
-            $result=$this->_resultados->UpdateUsrSicoplas($post,$table,$wh,$id);
+            
+            $result=$this->_resultados->UpdateUsrSicoplas($post,$table,$wh);
             // var_dump($result); exit;
             if($result){
                 return $this->_redirect('/panela/usuarios');
