@@ -126,4 +126,25 @@ class PanelaController extends Zend_Controller_Action{
             }
         }
     }
+    public function requesteditempAction(){
+        $this->_helper->layout()->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+
+        $post = $this->getRequest()->getPost();
+
+        if($this->getRequest()->getPost()){
+            $table="empresas";
+            $wh="id";
+            $result=$this->_resultados->UpdateEmpSicoplas($post,$table,$wh);
+            // var_dump($result); exit;
+            if($result){
+                return $this->_redirect('/panela/empresas');
+            }else{
+                print '<script language="javaScript">';
+                print 'alert(NO SE PUEDE INSERTAR DATOS");';
+                print '</script>';
+
+            }
+        }
+    }
 }

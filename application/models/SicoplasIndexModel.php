@@ -105,17 +105,17 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
         }
     }
 
-  public function UpdateEmpSicoplas($post,$table,$wh,$id){
+  public function UpdateEmpSicoplas($post,$table,$wh){
         try {
             $db = Zend_Db_Table::getDefaultAdapter();
-            $qry = $db->query("UPDATE $table SET nombree = ? , apellidop = ? , direccion = ? , correo = ? , telefono = ? , nombreg = ? , estado = ?WHERE $wh = ?",array(
+            $qry = $db->query("UPDATE $table SET nombree = ? , direccion = ? , correo = ? , telefono = ? , nombreg = ? , estado = ? WHERE $wh = ?",array(
                 $post['name'],
                 $post['dir'],
                 $post['mail'],
                 $post['telf'],
                 $post['gere'],
                 $post['estado'],
-                $id));
+                $post['id']));
             $db->closeConnection();               
             return $qry;
         } 
