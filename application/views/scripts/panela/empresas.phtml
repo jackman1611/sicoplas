@@ -21,7 +21,7 @@
 				<td><?php echo $emp['creado']; ?></td>
 				<td><?php echo $emp['estado']; ?></td>
 				<td><a href="/panela/empresasedit/id/<?php echo $emp['id']; ?>"><i class="fas fa-2x fa-edit"></i></a></td>
-				<td><a href=""><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
+				<td><a href="/panela/requestdeleteemp/id/<?php echo $emp['id']; ?>"><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
 			</tbody>
 		<?php endforeach ?>
 	</table>

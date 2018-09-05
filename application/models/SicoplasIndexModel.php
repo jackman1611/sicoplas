@@ -122,5 +122,15 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
         catch (Exception $e) {
             echo $e;
         }
+    }
+    public function deleteAll($id,$table,$wh){
+        try {
+            $db = Zend_Db_Table::getDefaultAdapter();
+            $var =  $db->query ("DELETE from $table where $wh = ? ",array($id));
+            $db->closeConnection();
+            return $var;
+        } catch (Exception $e) {
+            echo $e;
+        }
     }  
 }

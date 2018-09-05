@@ -148,4 +148,35 @@ class PanelaController extends Zend_Controller_Action{
             }
         }
     }
+
+    public function requestdeleteusrAction(){
+        $this->_helper->layout()->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+        if($this->_hasParam('id')){
+        $id = $this->_getParam('id');
+        $table ="usuarios";
+        $wh="id";
+        $result= $this->_resultados->deleteAll($id,$table,$wh);
+        if($result){
+            return $this->_redirect('/panela/usuarios');
+        }
+    }else{
+        return $this->_redirect('/panela');
+        }
+}
+        public function requestdeleteempAction(){
+        $this->_helper->layout()->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+        if($this->_hasParam('id')){
+        $id = $this->_getParam('id');
+        $table ="empresas";
+        $wh="id";
+        $result= $this->_resultados->deleteAll($id,$table,$wh);
+        if($result){
+            return $this->_redirect('/panela/empresas');
+        }
+    }else{
+        return $this->_redirect('/panela');
+        }
+}
 }

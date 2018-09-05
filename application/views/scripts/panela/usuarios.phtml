@@ -27,7 +27,7 @@
 				<?php endif ?>
 				<td><?php echo $usr['creado']; ?></td>
 				<td><a href="/panela/usuariosedit/id/<?php echo $usr['id']; ?>"><i class="fas fa-2x fa-edit"></i></a></td>
-				<td><a href=""><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
+				<td><a href="/panela/requestdeleteusr/id/<?php echo $usr['id']; ?>"><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
 			</tbody>
 		<?php endforeach ?>
 	</table>
