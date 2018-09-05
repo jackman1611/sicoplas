@@ -112,7 +112,7 @@ class PanelaController extends Zend_Controller_Action{
         $post = $this->getRequest()->getPost();
 
         if($this->getRequest()->getPost()){
-            $table="empresas";
+            $table="usuarios";
             $wh="id";
             
             $result=$this->_resultados->UpdateUsrSicoplas($post,$table,$wh);
