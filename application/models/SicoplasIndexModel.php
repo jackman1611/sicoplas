@@ -52,6 +52,7 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
                 echo $e;
             }
         }
+        
 
     public function GetSpecific($table,$wh,$id){
          try {
