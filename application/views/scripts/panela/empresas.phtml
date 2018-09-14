@@ -1,12 +1,16 @@
 <div class="row">
+	<br><a data-toggle="modal" data-target="#myModal" class="btn btn-info" href="#">AGREGAR</a>
+</div>
+<br>
+
+<div class="row">
 	<table class="table text-left table-hover"> 
-		<br><a data-toggle="modal" data-target="#myModal" class="btn btn-info" href="#">AGREGAR</a>
 		<thead>
 			<th>NOMBRE</th>
 			<th>DIRECCION</th>
 			<th>CORREO</th>
 			<th>TELEFONO</th>
-			<th>NOMBRE GERENTE</th>
+			<th>GERENTE</th>
 			<th>CREADO</th>
 			<th>ESTADO</th>
 			<th>EDITAR</th>
@@ -26,8 +30,8 @@
 			</tbody>
 		<?php endforeach ?>
 	</table>
-	
 </div>
+
 <div class="modal fades" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
 	<div class="modal-dialog" style="background-color: white;">

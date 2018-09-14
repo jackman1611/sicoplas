@@ -17,11 +17,6 @@ class PanelaController extends Zend_Controller_Action{
         $this->view->servicios = $this->_resultados->GetAll($table);  
     }//init
 
-    public function serviciosAction()
-    {
-    	
-    }
-
     public function usuariosAction()
     {
     $table="usuarios";
