@@ -220,5 +220,15 @@ class PanelaController extends Zend_Controller_Action{
     }else{
         return $this->_redirect('/panela');
         }
-}
+    }
+
+        public function nuevoservicioAction()
+    {
+       $table="empresas";
+        $this->view->empresas = $this->_resultados->GetAll($table);
+       $table="vector";
+        $this->view->vector = $this->_resultados->GetAll($table);
+
+    }
+
 }

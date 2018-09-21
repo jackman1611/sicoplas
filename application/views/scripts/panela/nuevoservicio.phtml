@@ -1,0 +1,38 @@
+<div>
+	<div>
+		<select name="empresa" class="form-control" required>
+			<option value="">
+				SELECCIONE EMPRESA
+					<?php foreach ($this->empresas as $emp){  ?>
+						<option value="<?php echo $emp["id"]; ?>"><?php echo $emp["nombree"]; ?> <?php echo $emp["estado"]; ?>
+						</option>
+					<?php } ?>
+				</select>
+			</option>
+
+		</select>
+	</div>
+	<div>
+		<br></br>
+		<select name="vector" class="form-control" required>
+			<option value="">
+				SLECCIONE VECTOR
+					<?php foreach ($this->vector as $vec){  ?>
+						<option value="<?php echo $vec["id"]; ?>"><?php echo $vec["nombre"]; ?>
+						</option>
+					<?php } ?>
+				</select>
+			</option>
+
+		</select>
+	</div>
+	<br></br>
+	<div class="col-lg-12 text-left">
+		<label for="text"><h4>Nombre(s): </h4></label>
+		<p><input type="text" name="name" class="form-control" required></p>
+	</div>
+	
+</div>
+<button type="submit" class="btn btn-primary">GUARDAR </button>
+</form>
+
