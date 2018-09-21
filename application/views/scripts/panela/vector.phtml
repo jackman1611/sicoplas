@@ -1,0 +1,27 @@
+
+<form method="POST" action="/panela/requestaddvec" enctype="multipart/form-data">
+
+	<div class="col-lg-12 text-left">
+		<label for="text"><h4>Nombre del Vector/Plaga: </h4></label>
+		<p><input type="text" name="name" class="form-control" required></p>
+	</div>
+	<button type="submit" class="btn btn-primary">GUARDAR </button>
+</form>
+
+<br>
+<div class="row">
+	<table class="table text-left table-hover"> 
+		<thead>
+			<th>Nombre</th>
+			<th>Eliminar</th>
+			
+			
+		</thead>
+		<?php foreach ($this->vector as $vec): ?>
+			<tbody>
+				<td><?php echo $vec['nombre']; ?></td>
+				<td><a href="/panela/requestdeletevec/id/<?php echo $vec['id']; ?>"><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
+			</tbody>
+		<?php endforeach ?>
+	</table>
+</div>

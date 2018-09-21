@@ -23,6 +23,12 @@ class PanelaController extends Zend_Controller_Action{
     $this->view->usuarios = $this->_resultados->GetAll($table);	
     }
 
+ public function vectorAction()
+    {
+    $table="vector";
+    $this->view->vector = $this->_resultados->GetAll($table); 
+    }
+
     public function usuarioseditAction()
     {
         $table="usuarios";
@@ -68,6 +74,29 @@ class PanelaController extends Zend_Controller_Action{
         // var_dump($result); exit;
         if($result){
             return $this->_redirect('/panela/usuarios');
+        }else{
+            print '<script language="javaScript">';
+            print 'alert(NO SE PUEDE INSERTAR DATOS");';
+            print '</script>';
+
+        }
+
+       }
+    }
+
+    public function requestaddvecAction()
+    {
+       $this->_helper->layout()->disableLayout();
+       $this->_helper->viewRenderer->setNoRender(true);
+
+       $post = $this->getRequest()->getPost();
+
+       if($this->getRequest()->getPost()){
+        $table="vector";
+        $result=$this->_resultados->insertVector($post,$table);
+        // var_dump($result); exit;
+        if($result){
+            return $this->_redirect('/panela/vector');
         }else{
             print '<script language="javaScript">';
             print 'alert(NO SE PUEDE INSERTAR DATOS");';
@@ -159,6 +188,24 @@ class PanelaController extends Zend_Controller_Action{
         return $this->_redirect('/panela');
         }
 }
+
+   public function requestdeletevecAction(){
+        $this->_helper->layout()->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+        if($this->_hasParam('id')){
+        $id = $this->_getParam('id');
+        $table ="vector";
+        $wh="id";
+        $result= $this->_resultados->deleteAll($id,$table,$wh);
+        if($result){
+            return $this->_redirect('/panela/vector');
+        }
+    }else{
+        return $this->_redirect('/panela');
+        }
+}
+
+
         public function requestdeleteempAction(){
         $this->_helper->layout()->disableLayout();
         $this->_helper->viewRenderer->setNoRender(true);

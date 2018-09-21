@@ -35,6 +35,19 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
         }
     }//Insert
 
+    public function insertVector($post,$table){
+        try {
+            $db = Zend_Db_Table::getDefaultAdapter();
+            $datasave = array(
+                'nombre'=>$post['name']);
+            $res = $db->insert($table, $datasave);
+            $db->closeConnection();               
+            return $res;
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }//Insert
+
     public function insertEmpresa($post,$table){
         try {
             $db = Zend_Db_Table::getDefaultAdapter();
