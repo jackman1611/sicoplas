@@ -13,7 +13,7 @@ class PanelaController extends Zend_Controller_Action{
     }//init
 
     public function indexAction(){
-       $table="servicios";
+       $table="form_servicio";
         $this->view->servicios = $this->_resultados->GetAll($table);  
     }//init
 
