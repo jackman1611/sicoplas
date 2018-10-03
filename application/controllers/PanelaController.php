@@ -10,6 +10,9 @@ class PanelaController extends Zend_Controller_Action{
         $this->_resultados = new Application_Model_SicoplasIndexModel;
        $layout = $this->_helper->layout();
        $layout->setLayout('layout-admin');
+      
+       $id=$this->_session->id;
+       var_dump($id);
     }//init
 
     public function indexAction(){
@@ -228,6 +231,19 @@ class PanelaController extends Zend_Controller_Action{
         $this->view->empresas = $this->_resultados->GetAll($table);
        $table="vector";
         $this->view->vector = $this->_resultados->GetAll($table);
+
+    }
+
+    public function request()
+    {
+        $id=$this->_session->id;
+        /*todos los datos estan en $POST*/
+
+        /*insertar en la tabla fuerte*/
+        /*Sacar el id del servicio que se esta registrando*/
+        /*sacar el ultimo registrado con get all*/
+        /*insertar en la primera tabla que rompe relacion vector*/
+        /*id formulario y id vectores*/
 
     }
 
