@@ -104,9 +104,7 @@ class PanelaController extends Zend_Controller_Action{
             print '<script language="javaScript">';
             print 'alert(NO SE PUEDE INSERTAR DATOS");';
             print '</script>';
-
         }
-
        }
     }
 
@@ -234,9 +232,36 @@ class PanelaController extends Zend_Controller_Action{
 
     }
 
+    public function requestaddnuevoservicioAction()
+    {
+        if($this->getrequest()->getpost()){
+            $table="form_servicio";
+
+            $id = $this->_session->id;
+            $post =$this->getrequest()->getpost();
+            $result =$this->_resultados->insertNuevoServicio($post,$table,$id);
+            $last=$this->_resultados->GetLast($table);
+var_dump($last);exit;
+
+            $table="vector_form";
+            $idf = $last['id'];
+            foreach ($post["option"] as $key) {
+                $tempo = $key;
+                $result2=$this->_resultados->insertVector($idf,$tempo,$table);  
+            }
+            exit;
+
+            if($result){
+                return $this->_redirect('/panela/index');
+            }
+        }
+
+    }
+
     public function request()
     {
         $id=$this->_session->id;
+
         /*todos los datos estan en $POST*/
 
         /*insertar en la tabla fuerte*/

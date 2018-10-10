@@ -35,11 +35,12 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
         }
     }//Insert
 
-    public function insertVector($post,$table){
+    public function insertVector($idf,$tempo,$table){
         try {
             $db = Zend_Db_Table::getDefaultAdapter();
             $datasave = array(
-                'nombre'=>$post['name']);
+                'form'=>$idf,
+                'vector'=>$tempo);
             $res = $db->insert($table, $datasave);
             $db->closeConnection();               
             return $res;
@@ -65,6 +66,22 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
                 echo $e;
             }
         }
+
+        public function insertNuevoServicio($post,$table,$id){
+        try {
+            $db = Zend_Db_Table::getDefaultAdapter();
+            $datasave = array(
+                'descripcion'=>$post['descrip'],
+                'comentarios'=>$post['coment'],
+                'id_usr'=>$id,
+                'id_empresa'=>$post['emp']);
+                $res = $db->insert($table, $datasave);
+                $db->closeConnection();               
+                return $res;
+            } catch (Exception $e) {
+                echo $e;
+            }
+        }
         
 
     public function GetSpecific($table,$wh,$id){
@@ -78,6 +95,19 @@ class Application_Model_SicoplasIndexModel extends Zend_Db_Table_Abstract{
             echo $e;
         }
     }//getespecific
+
+public function GetLast($table){
+         try {
+            $db = Zend_Db_Table::getDefaultAdapter();
+            $qry = $db->query("SELECT * FROM $table ORDER by ID DESC LIMIT 1;");
+            $row = $qry->fetchAll();
+            $db->closeConnection();
+            return $row;
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }
+
 
     Public function Validar($post){
 
