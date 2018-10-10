@@ -12,7 +12,6 @@ class PanelaController extends Zend_Controller_Action{
        $layout->setLayout('layout-admin');
       
        $id=$this->_session->id;
-       var_dump($id);
     }//init
 
     public function indexAction(){
@@ -241,15 +240,15 @@ class PanelaController extends Zend_Controller_Action{
             $post =$this->getrequest()->getpost();
             $result =$this->_resultados->insertNuevoServicio($post,$table,$id);
             $last=$this->_resultados->GetLast($table);
-var_dump($last);exit;
-
+            foreach ($last as $la) {
+               $idf = $la["id"];
+            }
+            
             $table="vector_form";
-            $idf = $last['id'];
             foreach ($post["option"] as $key) {
                 $tempo = $key;
                 $result2=$this->_resultados->insertVector($idf,$tempo,$table);  
             }
-            exit;
 
             if($result){
                 return $this->_redirect('/panela/index');
@@ -266,7 +265,7 @@ var_dump($last);exit;
 
         /*insertar en la tabla fuerte*/
         /*Sacar el id del servicio que se esta registrando*/
-        /*sacar el ultimo registrado con get all*/
+        /*sacar el ultimo registrado con get last*/
         /*insertar en la primera tabla que rompe relacion vector*/
         /*id formulario y id vectores*/
 
