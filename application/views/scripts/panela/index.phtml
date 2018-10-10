@@ -1,5 +1,5 @@
 <div class="row">
-	<br><a class="btn btn-info" href="/panela/nuevoservicio">AGREGAR</a>
+	<br><a class="btn btn-success" href="/panela/nuevoservicio">AGREGAR</a>
 </div>
 <br>
 
@@ -8,13 +8,31 @@
 		<thead>
 			<th>Descripcion</th>
 			<th>Comentarios</th>
+			<th>Vector(es)</th>
+			<th>Empresas</th>
+			<th>Editar</th>
+			<th>Eliminar</th>
+			
 		</thead>
 		<?php foreach ($this->servicios as $serv): ?>
 			<tbody>
 				<td><?php echo $serv['descripcion']; ?></td>
 				<td><?php echo $serv['comentarios']; ?></td>
+				<td>
+					<?php foreach ($this->vecform as $vefo): ?>
+						<?php if ($serv["id"]==$vefo["form"]): ?>
+					<?php foreach ($this->vectores as $vect): ?>
+						<?php if ($vefo["vector"]==$vect["id"]): ?>
+							<?php echo $vect["nombre"].","; ?>
+						<?php endif ?>
+					<?php endforeach ?>
+					<?php endif ?>
+				<?php endforeach ?>
+				</td>
+				<td></td>
 				<td><a href="/panela/empresasedit/id/<?php echo $serv['id']; ?>"><i class="fas fa-2x fa-edit"></i></a></td>
 				<td><a href=""><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
+				<td><a href="" class="btn btn-info">Ver detalles</a></td>
 			</tbody>
 		<?php endforeach ?>
 	</table>

@@ -15,8 +15,14 @@ class PanelaController extends Zend_Controller_Action{
     }//init
 
     public function indexAction(){
-       $table="form_servicio";
+        $table="form_servicio";
         $this->view->servicios = $this->_resultados->GetAll($table);  
+        $table="vector_form";
+        $this->view->vecform = $this->_resultados->GetAll($table);  
+        $table="vector";
+        $this->view->vectores = $this->_resultados->GetAll($table);
+        $table="empresas";
+        $this->view->empresas = $this->_resultados->GetAll($table);  
     }//init
 
     public function usuariosAction()
@@ -243,7 +249,7 @@ class PanelaController extends Zend_Controller_Action{
             foreach ($last as $la) {
                $idf = $la["id"];
             }
-            
+
             $table="vector_form";
             foreach ($post["option"] as $key) {
                 $tempo = $key;

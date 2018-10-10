@@ -18,9 +18,12 @@
 	<div>
 		<br></br>
 		<div class="row">
+				<div class="col-md-12">
+					<label for="text"><h3>Vector (es):</h3></label>
+				</div><br>
 				<?php foreach ($this->vector as $vec) { ?>
 				<div class="col-md-2">
-					<input type="checkbox" name="option[]" value="<?php echo $vec["id"]; ?>"><?php echo $vec["nombre"]; ?></input><br>
+					<input type="checkbox" name="option[]" value="<?php echo $vec["id"]; ?>"> <?php echo $vec["nombre"]; ?></input><br>
 				</div>
 					<?php } ?>
 			</div>
@@ -28,20 +31,22 @@
 	</div>
 	<br></br>
 	<div class="col-md-12">
-		<label for="text">Descripción:</label>
+		<label for="text"><h3>Descripción:</h3></label>
 		<textarea class="" id="editorDescripcion" rows="100" cols="100"  name="descrip"></textarea>
 		<script type="text/javascript">CKEDITOR.replace( 'editorDescripcion',{
 			height : 100,
 		}); </script>
 	</div>
-	<br></br>
+	<br>
 	<div class="col-md-12">
-		<label for="text">Comentarios:</label>
-		<textarea class="" id="editorComentario" rows="100" cols="100"  name="coment"></textarea>
-		<script type="text/javascript">CKEDITOR.replace( 'editorComentario',{
-			height : 100,
-		}); </script>
-	</div>
-<button type="submit" class="btn btn-primary">GUARDAR </button>
+		<label for="text"><h3>Comentarios:</h3></label>
+			<textarea class="" id="editorComentario" rows="100" cols="100"  name="coment"></textarea>
+			<script type="text/javascript">CKEDITOR.replace( 'editorComentario',{
+				height : 100,
+			}); </script>
+		</div><br>
+		<div>
+			<button type="submit" class="btn btn-primary">GUARDAR </button>
+		</div>
 </form>
 
