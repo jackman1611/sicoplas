@@ -31,6 +31,11 @@ class PanelaController extends Zend_Controller_Action{
     $this->view->usuarios = $this->_resultados->GetAll($table);	
     }
 
+public function detallesservicioAction()
+    {
+    
+    }    
+
  public function vectorAction()
     {
     $table="vector";
