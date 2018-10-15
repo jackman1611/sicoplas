@@ -1,0 +1,64 @@
+<div class="row">
+	<br><a class="btn btn-success" href="/panela/nuevoservicio">AGREGAR</a>
+</div>
+<br>
+
+<div class="row">
+	<table class="table text-left table-hover"> 
+		<tbody>
+			<th>Empresas</th>
+			<td>
+				<?php foreach ($this->empresas as $emp): ?>
+					<?php echo $emp['nombree']; ?> <?php echo $emp['estado']; ?>
+				<?php endforeach ?>
+			</td>
+			</tbody>
+		</table>
+	</div>
+<div class="row">
+	<table class="table text-left table-hover"> 
+		<tbody>
+			<th>Vector(es)</th>
+			<?php foreach ($this->servicios as $serv): ?>
+				<td>
+					<?php foreach ($this->vecform as $vefo): ?>
+						<?php if ($serv["id"]==$vefo["form"]): ?>
+					<?php foreach ($this->vectores as $vect): ?>
+						<?php if ($vefo["vector"]==$vect["id"]): ?>
+							<?php echo $vect["nombre"].","; ?>
+						<?php endif ?>
+					<?php endforeach ?>
+					<?php endif ?>
+				<?php endforeach ?>
+			</td>
+	<?php endforeach ?>
+			</tbody>
+		</table>
+	</div>
+			<div class="row">
+	<table class="table text-left table-hover"> 
+		<tbody>
+			<?php foreach ($this->servicios as $serv): ?>
+			<th>Descripcion</th>
+			<td><?php echo $serv['descripcion']; ?></td>
+			</tbody>
+			<?php endforeach ?>
+		</table>
+	</div>
+
+	<div class="row">
+	<table class="table text-left table-hover"> 
+		<tbody>
+			<?php foreach ($this->servicios as $serv): ?>
+			<th>Comentarios</th>
+			<td><?php echo $serv['comentarios']; ?></td>
+			</tbody>
+			<?php endforeach ?>
+		</table>
+	</div>
+		
+		
+		
+		
+</table>
+</div>

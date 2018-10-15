@@ -34,6 +34,30 @@ class PanelaController extends Zend_Controller_Action{
 public function detallesservicioAction()
     {
     
+        if($this->_hasParam('id')){
+            $id = $this->_getParam('id');
+            $wh="id";
+            $table="form_servicio";
+            $this->view->servicios = $this->_resultados->GetSpecific($table,$wh,$id);
+            $last= $this->_resultados->GetSpecific($table,$wh,$id);
+            foreach ($last as $la) {
+               $ide = $la["id_empresa"];
+            }
+            
+
+
+            $table="vector";
+            $this->view->vectores = $this->_resultados->GetAll($table);
+
+            $table="vector_form";
+            $wh = "form";
+            $this->view->vecform = $this->_resultados->GetSpecific($table,$wh,$id);
+
+            $table = "empresas";
+            $wh = "id";
+            $this->view->empresas = $this->_resultados->GetSpecific($table,$wh,$ide);
+
+        }
     }    
 
  public function vectorAction()
