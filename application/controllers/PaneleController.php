@@ -10,11 +10,17 @@ class PaneleController extends Zend_Controller_Action{
 		$this->_resultados = new Application_Model_SicoplasIndexModel;
        $layout = $this->_helper->layout();
        $layout->setLayout('layout-e');
+
+        if(empty($this->_session->id)){
+            $this->redirect('/index/login');
+        }
     }//init
 
     public function indexAction(){
-    	$table="servicios";
-        $this->view->servicios = $this->_resultados->GetAll($table);
+      $id=$this->_session->id;
+      $wh="id_usr";
+      $table="form_servicio";
+      $this->view->servicios=$this->_resultados->GetSpecific($table,$wh,$id);
     }//init
 
     public function requestaddreportAction()

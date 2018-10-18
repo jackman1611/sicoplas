@@ -1,16 +1,19 @@
+<?php $session = new Zend_Session_Namespace("current_session"); 
+$name= $session->nombre;
+?>
 <div class="col-lg-12 text-center">
-		<label for="text"><h4>  E M P L E A D O </h4></label>
+		<label for="text"><h4> E M P L E A D O: Hola <?php echo $name ?> </h4></label>
 
 <div class="row">
 	<table class="table text-left table-hover"> 
 		<thead>
-			<th>Nombre</th>
-			<th>Correo</th>
+			<th>Descripcion</th>
+			<th>Comentarios</th>
 		</thead>
 		<?php foreach ($this->servicios as $serv): ?>
 			<tbody>
-				<td><?php echo $var ?></td>
-				<td><?php echo $var ?></td>
+				<td><?php echo $serv['descripcion'] ?></td>
+				<td><?php echo $serv['comentarios'] ?></td>
 			</tbody>
 		<?php endforeach ?>
 	</table>

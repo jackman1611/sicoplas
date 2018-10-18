@@ -8,10 +8,22 @@ class PanelaController extends Zend_Controller_Action{
 	public function init(){
         $this->_session = new Zend_Session_Namespace("current_session");
         $this->_resultados = new Application_Model_SicoplasIndexModel;
-       $layout = $this->_helper->layout();
-       $layout->setLayout('layout-admin');
+        $layout = $this->_helper->layout();
+        $layout->setLayout('layout-admin');
       
-       $id=$this->_session->id;
+        if(empty($this->_session->id)){
+            $this->redirect('/index/login');
+        }
+        $id=$this->_session->id;
+        $wh="id";
+        $table="usuario";
+        $usr = $this->_resultados->GetSpecific($table,$wh,$id);
+        foreach ($usr as $key) {
+           $fk=$key['rol'];
+        }
+        if($fk!=1){
+            $this->redirect('/panele');
+        }
     }//init
 
     public function indexAction(){
