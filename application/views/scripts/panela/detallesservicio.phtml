@@ -1,32 +1,33 @@
 <div class="row">
-	<br><a class="btn btn-success" href="/panela/nuevoservicio">AGREGAR</a>
-</div>
-<br>
-<div class="row">
 	<table class="table text-left table-hover"> 
 		<thead>
 			<th>Empresas</th>
+			<th>Estado</th>
 			<th>DIRECCION</th>
 			<th>CORREO</th>
 			<th>TELEFONO</th>
 			<th>GERENTE</th>
 		</thead>
 		<tbody>
-			<td>
-				<?php foreach ($this->empresas as $emp): ?>
-					<?php echo $emp['nombree']; ?> 
-					<?php echo $emp['estado']; ?>
-					<td><?php echo $emp['direccion']; ?></td>
-					<td><?php echo $emp['correo']; ?></td>
-					<td><?php echo $emp['telefono']; ?></td>
-					<td><?php echo $emp['nombreg']; ?></td>
-				</tbody>
+			
+			<?php foreach ($this->empresas as $emp): ?>
+				<td><?php echo $emp['nombree']; ?> </td>
+				<td><?php echo $emp['estado']; ?></td>
+				<td><?php echo $emp['direccion']; ?></td>
+				<td><?php echo $emp['correo']; ?></td>
+				<td><?php echo $emp['telefono']; ?></td>
+				<td><?php echo $emp['nombreg']; ?></td>
 			<?php endforeach ?>
-		</td>
-		<table class="table text-left table-hover"> 
-			<thead>
-				<th>Vector(es)</th>
-			</thead>
+		</tbody>
+	</table>
+</div>
+
+<div class="row">
+	<table class="table text-left table-hover"> 
+		<thead>
+			<th>Vector(es)</th>
+		</thead>
+		<tbody>
 			<?php foreach ($this->servicios as $serv): ?>
 				<td>
 					<?php foreach ($this->vecform as $vefo): ?>
@@ -39,17 +40,22 @@
 						<?php endif ?>
 					<?php endforeach ?>
 				</td>
-			</table>
-			<table class="table text-left table-hover">
-				<thead>
-					<th>Descripcion</th>
-					<th>Comentarios</th>
-				</thead>
-				<tbody>
-					<td><?php echo $serv['descripcion']; ?></td>
-					<td><?php echo $serv['comentarios']; ?></td>
-					<td>
-					</tbody>
-				<?php endforeach ?>
-			</table>
-		</div>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+</div>
+
+<div class="row">
+	<table class="table text-left table-hover">
+		<thead>
+			<th>Descripcion</th>
+			<th>Comentarios</th>
+		</thead>
+		<tbody>
+			<?php foreach ($this->servicios as $serv): ?>
+				<td><?php echo $serv['descripcion']; ?></td>
+				<td><?php echo $serv['comentarios']; ?></td>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+</div>
