@@ -2,63 +2,54 @@
 	<br><a class="btn btn-success" href="/panela/nuevoservicio">AGREGAR</a>
 </div>
 <br>
-
 <div class="row">
 	<table class="table text-left table-hover"> 
-		<tbody>
+		<thead>
 			<th>Empresas</th>
+			<th>DIRECCION</th>
+			<th>CORREO</th>
+			<th>TELEFONO</th>
+			<th>GERENTE</th>
+		</thead>
+		<tbody>
 			<td>
 				<?php foreach ($this->empresas as $emp): ?>
-					<?php echo $emp['nombree']; ?> <?php echo $emp['estado']; ?>
-				<?php endforeach ?>
-			</td>
-			</tbody>
-		</table>
-	</div>
-<div class="row">
-	<table class="table text-left table-hover"> 
-		<tbody>
-			<th>Vector(es)</th>
+					<?php echo $emp['nombree']; ?> 
+					<?php echo $emp['estado']; ?>
+					<td><?php echo $emp['direccion']; ?></td>
+					<td><?php echo $emp['correo']; ?></td>
+					<td><?php echo $emp['telefono']; ?></td>
+					<td><?php echo $emp['nombreg']; ?></td>
+				</tbody>
+			<?php endforeach ?>
+		</td>
+		<table class="table text-left table-hover"> 
+			<thead>
+				<th>Vector(es)</th>
+			</thead>
 			<?php foreach ($this->servicios as $serv): ?>
 				<td>
 					<?php foreach ($this->vecform as $vefo): ?>
 						<?php if ($serv["id"]==$vefo["form"]): ?>
-					<?php foreach ($this->vectores as $vect): ?>
-						<?php if ($vefo["vector"]==$vect["id"]): ?>
-							<?php echo $vect["nombre"].","; ?>
+							<?php foreach ($this->vectores as $vect): ?>
+								<?php if ($vefo["vector"]==$vect["id"]): ?>
+									<?php echo $vect["nombre"].","; ?>
+								<?php endif ?>
+							<?php endforeach ?>
 						<?php endif ?>
 					<?php endforeach ?>
-					<?php endif ?>
+				</td>
+			</table>
+			<table class="table text-left table-hover">
+				<thead>
+					<th>Descripcion</th>
+					<th>Comentarios</th>
+				</thead>
+				<tbody>
+					<td><?php echo $serv['descripcion']; ?></td>
+					<td><?php echo $serv['comentarios']; ?></td>
+					<td>
+					</tbody>
 				<?php endforeach ?>
-			</td>
-	<?php endforeach ?>
-			</tbody>
-		</table>
-	</div>
-			<div class="row">
-	<table class="table text-left table-hover"> 
-		<tbody>
-			<?php foreach ($this->servicios as $serv): ?>
-			<th>Descripcion</th>
-			<td><?php echo $serv['descripcion']; ?></td>
-			</tbody>
-			<?php endforeach ?>
-		</table>
-	</div>
-
-	<div class="row">
-	<table class="table text-left table-hover"> 
-		<tbody>
-			<?php foreach ($this->servicios as $serv): ?>
-			<th>Comentarios</th>
-			<td><?php echo $serv['comentarios']; ?></td>
-			</tbody>
-			<?php endforeach ?>
-		</table>
-	</div>
-		
-		
-		
-		
-</table>
-</div>
+			</table>
+		</div>
