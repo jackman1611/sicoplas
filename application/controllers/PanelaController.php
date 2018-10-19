@@ -15,12 +15,15 @@ class PanelaController extends Zend_Controller_Action{
             $this->redirect('/index/login');
         }
         $id=$this->_session->id;
+
+        
         $wh="id";
-        $table="usuario";
+        $table="usuarios";
         $usr = $this->_resultados->GetSpecific($table,$wh,$id);
         foreach ($usr as $key) {
            $fk=$key['rol'];
         }
+        
         if($fk!=1){
             $this->redirect('/panele');
         }

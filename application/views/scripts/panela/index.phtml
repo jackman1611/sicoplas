@@ -1,6 +1,8 @@
+<?php $session = new Zend_Session_Namespace("current_session"); 
+$name= $session->nombre;
+?>
 <div class="col-lg-12 text-center">
-		<label for="text"><h4> A D M I N I S T R A D O R</h4></label>
-<div class="row">
+		<label for="text"><h4> E M P L E A D O: Hola <?php echo $name ?> </h4></label>
 
 	<br><a class="btn btn-success" href="/panela/nuevoservicio">AGREGAR</a>
 </div>
