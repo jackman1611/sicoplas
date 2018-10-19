@@ -2,84 +2,106 @@
 $name= $session->nombre;
 ?>
 <div class="col-lg-12 text-center">
-		<label for="text"><h4> E M P L E A D O: Hola <?php echo $name ?> </h4></label>
-
-<div class="row">
-	<table class="table text-left table-hover"> 
-		<thead>
-			<th>Descripcion</th>
-			<th>Comentarios</th>
-		</thead>
-		<?php foreach ($this->servicios as $serv): ?>
-			<tbody>
-				<td><?php echo $serv['descripcion'] ?></td>
-				<td><?php echo $serv['comentarios'] ?></td>
-			</tbody>
-		<?php endforeach ?>
-	</table>
-</div>
-<div>
-<br><a data-toggle="modal" data-target="#myModal" class="btn btn-info" href="#">AGREGAR NUEVO</a>
-</div>
-
-<div class="modal fades" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-	<div class="modal-dialog" style="background-color: white;">
-		<div clas="modal-content">
-
-			<form method="POST" action="/panele/requestaddreport" enctype="multipart/form-data">
-				<div class="modal-header">
-					<h4 class="model-title" id="myModalLabel">Nuevo reporte:</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div>
-						<input type="hidden" name="rol" value="2">
-						<div class=""></div>
-						<div class="col-lg-12 text-left">
-							<label for="text"><h4>Fecha: </h4></label>
-							<p><input type="text" name="date" class="form-control" required></p>
-						</div>
-						<div class="col-lg-12 text-left">
-							<label for="text"><h4>Hora: </h4></label>
-							<p><input type="text" name="hour" class="form-control" required></p>
-						</div>
-						<div class="col-lg-12 text-left">
-							<label for="text"><h4>Responsable: </h4></label>
-							<p><input type="text" name="resp" class="form-control" required></p>
-						</div>
-						<div class="col-lg-12 text-left">
-							<label for="text"><h4>Nombre del Cliente: </h4></label>
-							<p><input type="text" name="clie" class="form-control" required></p>
-						</div>
-						<div class="col-lg-12 text-left">
-							<label for="text"><h4>Telefono: </h4></label>
-							<p><input type="text" name="phone" class="form-control" onkeypress="return numeros(event)" required></p>
-						</div>
-						<div class="col-lg-12 text-left">
-							<label for="text"><h4>EMAIL: </h4></label>
-							<p><input type="text" name="mail" class="form-control" required></p>
-						</div>
-						<div class="col-lg-12 text-left">
-							<label for="text"><h4>DIRECCION: </h4></label>
-							<p><input type="text" name="dir" class="form-control" required></p>
-						</div>
-						<div class="col-lg-12 text-left">
-							<label for="text"><h4>DESCRIPCION: </h4></label>
-							<p><input type="text" name="desc" class="form-control" required></p>
-						</div>
-					</div>
-					<!-- Boton -->
-					<!-- Boton -->
-				</div>
-				<div class ="modal-footer">
-					<button type="button" class="btn btn-default" data-dismmiss="modal">CERRAR</button>
-					<button type="submit" class="btn btn-primary">GUARDAR </button>
-					
-				</div>
-			</form>
-			
-		</div>	
-
+	<label for="text"><h4> E M P L E A D O: Hola <?php echo $name ?> </h4></label>
+	<div>
+		<br><a data-toggle="modal" data-target="#myModal" class="btn btn-info" href="#">AGREGAR NUEVO</a>
 	</div>
-</div>
+
+	<div class="row">
+		<table class="table text-left table-hover"> 
+			<thead>
+				<th>Descripcion</th>
+				<th>Comentarios</th>
+				<th>Vector(es)</th>
+				<th>Empresas</th>
+				<th>Editar</th>
+				<th>Eliminar</th>
+			</thead>
+			<?php foreach ($this->servicios as $serv): ?>
+				<tbody>
+					<td><?php echo $serv['descripcion']; ?></td>
+					<td><?php echo $serv['comentarios']; ?></td>
+					<td>
+						<?php foreach ($this->vecform as $vefo): ?>
+							<?php if ($serv["id"]==$vefo["form"]): ?>
+								<?php foreach ($this->vectores as $vect): ?>
+									<?php if ($vefo["vector"]==$vect["id"]): ?>
+										<?php echo $vect["nombre"].","; ?>
+									<?php endif ?>
+								<?php endforeach ?>
+							<?php endif ?>
+						<?php endforeach ?>
+						<td>
+							<?php foreach ($this->empresas as $emp): ?>
+								<?php echo $emp['nombree']; ?> 
+								<?php echo $emp['estado']; ?>
+							<?php endforeach ?>
+							<td><a href="/panela/empresasedit/id/<?php echo $serv['id']; ?>"><i class="fas fa-2x fa-edit"></i></a></td>
+							<td><a href="/panela/requestdeleteemp/id/<?php echo $serv['id']; ?>"><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
+							<td><a href="/panela/detallesservicio/id/<?php echo $serv['id']; ?>" class="btn btn-info">Ver detalles</a></td>
+						</tbody>
+					<?php endforeach ?>
+				</table>
+			</div>
+
+			<div class="modal fades" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+				<div class="modal-dialog" style="background-color: white;">
+					<div clas="modal-content">
+
+						<form method="POST" action="/panele/requestaddreport" enctype="multipart/form-data">
+							<div class="modal-header">
+								<h4 class="model-title" id="myModalLabel">Nuevo reporte:</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<div>
+									<input type="hidden" name="rol" value="2">
+									<div class=""></div>
+									<div class="col-lg-12 text-left">
+										<label for="text"><h4>Fecha: </h4></label>
+										<p><input type="text" name="date" class="form-control" required></p>
+									</div>
+									<div class="col-lg-12 text-left">
+										<label for="text"><h4>Hora: </h4></label>
+										<p><input type="text" name="hour" class="form-control" required></p>
+									</div>
+									<div class="col-lg-12 text-left">
+										<label for="text"><h4>Responsable: </h4></label>
+										<p><input type="text" name="resp" class="form-control" required></p>
+									</div>
+									<div class="col-lg-12 text-left">
+										<label for="text"><h4>Nombre del Cliente: </h4></label>
+										<p><input type="text" name="clie" class="form-control" required></p>
+									</div>
+									<div class="col-lg-12 text-left">
+										<label for="text"><h4>Telefono: </h4></label>
+										<p><input type="text" name="phone" class="form-control" onkeypress="return numeros(event)" required></p>
+									</div>
+									<div class="col-lg-12 text-left">
+										<label for="text"><h4>Email: </h4></label>
+										<p><input type="text" name="mail" class="form-control" required></p>
+									</div>
+									<div class="col-lg-12 text-left">
+										<label for="text"><h4>Direccion: </h4></label>
+										<p><input type="text" name="dir" class="form-control" required></p>
+									</div>
+									<div class="col-lg-12 text-left">
+										<label for="text"><h4>Descripcion: </h4></label>
+										<p><input type="text" name="desc" class="form-control" required></p>
+									</div>
+								</div>
+								<!-- Boton -->
+								<!-- Boton -->
+							</div>
+							<div class ="modal-footer">
+								<button type="button" class="btn btn-default" data-dismmiss="modal">CERRAR</button>
+								<button type="submit" class="btn btn-primary">GUARDAR </button>
+
+							</div>
+						</form>
+
+					</div>	
+
+				</div>
+			</div>

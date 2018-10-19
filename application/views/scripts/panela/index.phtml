@@ -1,50 +1,44 @@
 <div class="col-lg-12 text-center">
-		<label for="text"><h4> A D M I N I S T R A D O R</h4></label>
-<div class="row">
+	<label for="text"><h4> A D M I N I S T R A D O R</h4></label>
+	<div class="row">
 
-	<br><a class="btn btn-success" href="/panela/nuevoservicio">AGREGAR</a>
-</div>
-<br>
+		<br><a class="btn btn-success" href="/panela/nuevoservicio">AGREGAR</a>
+	</div>
+	<br>
 
-<div class="row">
-	<table class="table text-left table-hover"> 
-		<thead>
-			<th>Descripcion</th>
-			<th>Comentarios</th>
-			<th>Vector(es)</th>
-			<th>Empresas</th>
-			<th>Editar</th>
-			<th>Eliminar</th>
-			
-		</thead>
-		
-		<?php foreach ($this->servicios as $serv): ?>
-			<tbody>
-				<td><?php echo $serv['descripcion']; ?></td>
-				<td><?php echo $serv['comentarios']; ?></td>
-				<td>
-					<?php foreach ($this->vecform as $vefo): ?>
-						<?php if ($serv["id"]==$vefo["form"]): ?>
-					<?php foreach ($this->vectores as $vect): ?>
-						<?php if ($vefo["vector"]==$vect["id"]): ?>
-							<?php echo $vect["nombre"].","; ?>
-						<?php endif ?>
+	<div class="row">
+		<table class="table text-left table-hover"> 
+			<thead>
+				<th>Descripcion</th>
+				<th>Comentarios</th>
+				<th>Vector(es)</th>
+				<th>Empresas</th>
+				<th>Editar</th>
+				<th>Eliminar</th>
+			</thead>
+			<?php foreach ($this->servicios as $serv): ?>
+				<tbody>
+					<td><?php echo $serv['descripcion']; ?></td>
+					<td><?php echo $serv['comentarios']; ?></td>
+					<td>
+						<?php foreach ($this->vecform as $vefo): ?>
+							<?php if ($serv["id"]==$vefo["form"]): ?>
+								<?php foreach ($this->vectores as $vect): ?>
+									<?php if ($vefo["vector"]==$vect["id"]): ?>
+										<?php echo $vect["nombre"].","; ?>
+									<?php endif ?>
+								<?php endforeach ?>
+							<?php endif ?>
+						<?php endforeach ?>
+						<td>
+							<?php foreach ($this->empresas as $emp): ?>
+								<?php echo $emp['nombree']; ?> 
+								<?php echo $emp['estado']; ?>
+							<?php endforeach ?>
+							<td><a href="/panela/empresasedit/id/<?php echo $serv['id']; ?>"><i class="fas fa-2x fa-edit"></i></a></td>
+							<td><a href="/panela/requestdeleteemp/id/<?php echo $serv['id']; ?>"><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
+							<td><a href="/panela/detallesservicio/id/<?php echo $serv['id']; ?>" class="btn btn-info">Ver detalles</a></td>
+						</tbody>
 					<?php endforeach ?>
-					<?php endif ?>
-				<?php endforeach ?>
-<td>
-				<?php foreach ($this->empresas as $emp): ?>
-					<?php echo $emp['nombree']; ?> 
-					<?php echo $emp['estado']; ?>
-
-			<?php endforeach ?>
-				
-                
-				
-				<td><a href="/panela/empresasedit/id/<?php echo $serv['id']; ?>"><i class="fas fa-2x fa-edit"></i></a></td>
-				<td><a href="/panela/requestdeleteemp/id/<?php echo $serv['id']; ?>"><i class="fas fa-2x fa-trash-alt" style="color: red;"></i></a></td>
-				<td><a href="/panela/detallesservicio/id/<?php echo $serv['id']; ?>" class="btn btn-info">Ver detalles</a></td>
-			</tbody>
-		<?php endforeach ?>
-	</table>
-</div>
+				</table>
+			</div>
